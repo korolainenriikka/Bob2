@@ -1,0 +1,10 @@
+POST 'http://localhost:3001/'
+Content-Type: application/json
+
+  {
+      "date": "10/11/2000",
+      "time": "11:00",
+      "content": "moi",
+      "id": 127
+    }
+
