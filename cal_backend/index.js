@@ -15,6 +15,12 @@ let cal = [
     "content": "hampsulääksy",
     "id": 132
   },
+  {
+    "date": "01/12/2020",
+    "time": "11:10",
+    "content": "hampsulääksy",
+    "id": 133
+  }
 ]
 
 const generateId = () => {
@@ -29,11 +35,11 @@ app.get('/', (req, res) => {
   res.json(cal)
 })
 
-app.get('/calendar', (req, res) => {
+app.get('/api/calendar', (req, res) => {
   res.json(cal)
 })
 
-app.post('/calendar', jsonParser, (req, res) => {
+app.post('/api/calendar', jsonParser, (req, res) => {
   const body = req.body
   console.log(req)
 
@@ -55,7 +61,7 @@ app.post('/calendar', jsonParser, (req, res) => {
   res.json(entry)
 })
 
-app.delete('/calendar/:id', (request, response) => {
+app.delete('/api/calendar/:id', (request, response) => {
   const id = Number(request.params.id)
   cal = cal.filter(cal => cal.id !== id)
 

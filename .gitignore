@@ -1,2 +1,4 @@
 *.txt
 timer_bob
+.env
+node_modules
