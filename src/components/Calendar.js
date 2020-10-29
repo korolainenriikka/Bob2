@@ -10,9 +10,18 @@ const Calendar = () => {
     calendarService
       .getAll()
       .then((calendar) => {
+        deleteOldEntries(calendar)
         setCalendarEntries(calendar.sort(sortByTime))
       })
   }, [])
+
+  const deleteOldEntries = (calendar) => {
+    calendar.forEach(entry => {
+      if (Date.parse(entry.dateTime) < Date.now()) {
+        calendarService.remove(entry._id)
+      }
+    })
+  }
 
   const sortByTime = (e1,e2) => {
     if (e1.dateTime < e2.dateTime){
