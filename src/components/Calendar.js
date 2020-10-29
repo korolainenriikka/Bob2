@@ -5,36 +5,7 @@ import CalendarFrom from './CalendarForm'
 import { timeStringToISO } from '../utils/timeConversion'
 import EntryList from './EntryList'
 
-const Calendar = () => {
-  const [calendarEntries, setCalendarEntries] = useState([])
-
-  useEffect(() => {
-    calendarService
-      .getAll()
-      .then((calendar) => {
-        deleteOldEntries(calendar)
-        setCalendarEntries(calendar.sort(sortByTime))
-      })
-  }, [])
-
-  const deleteOldEntries = (calendar) => {
-    calendar.forEach(entry => {
-      if (Date.parse(entry.dateTime) < Date.now()) {
-        calendarService.remove(entry._id)
-      }
-    })
-  }
-
-  const sortByTime = (e1,e2) => {
-    if (e1.dateTime < e2.dateTime){
-      return -1
-    } else if (e1.dateTime > e2.dateTime){
-      return 1
-    } else {
-      return 0
-    }
-  }
-
+const Calendar = ({ calendarEntries, setCalendarEntries, sortByTime }) => {
   const addNew = (date, time, content) => {
     const dateTime = timeStringToISO(date, time)
 
