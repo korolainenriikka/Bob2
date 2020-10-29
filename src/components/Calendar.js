@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import calendarService from '../services/calendarService'
 import CalendarEntry from './CalendarEntry'
 import CalendarFrom from './CalendarForm'
+import { timeStringToISO } from '../utils/timeConversion'
 
 const Calendar = () => {
   const [calendarEntries, setCalendarEntries] = useState([])
@@ -33,19 +34,8 @@ const Calendar = () => {
     }
   }
 
-  const parseToISO = (date, time) => {
-    const day = date.split('/')[0]
-    const month = date.split('/')[1]
-    const year = date.split('/')[2]
-
-    const hours = time.split(':')[0]
-    const minutes = time.split(':')[1]
-
-    return new Date(Date.parse(`${year}-${month}-${day}T${hours}:${minutes}`))
-  }
-
   const addNew = (date, time, content) => {
-    const dateTime = parseToISO(date, time)
+    const dateTime = timeStringToISO(date, time)
 
     const objectToAdd = {
       dateTime: dateTime,

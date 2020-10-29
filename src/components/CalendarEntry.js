@@ -1,9 +1,10 @@
 import React from 'react'
+import { ISOtoTimeString } from '../utils/timeConversion'
 
 const CalendarEntry = ({dateTime, content, id, deleteEntry}) => {
   return (
-    <li>{dateTime}: {content} 
-      
+    <li>
+      {ISOtoTimeString(dateTime)}: {content}  
     </li>
   )
 }
