@@ -3,8 +3,14 @@ const { Mongoose } = require('mongoose')
 const mongoose = require('mongoose')
 
 const calendarEntrySchema = new mongoose.Schema({
-  dateTime: Date,
-  content: String
+  dateTime: {
+    type: Date,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true,
+  }
 })
 
 module.exports =  mongoose.model('CalendarEntry', calendarEntrySchema)

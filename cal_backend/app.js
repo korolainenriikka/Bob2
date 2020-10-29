@@ -41,14 +41,7 @@ app.get('/api/calendar', async (req, res) => {
   res.json(cal)
 })
 
-app.post('/api/calendar', jsonParser, async (req, res) => {
-  /*
-  format:
-  {
-    datetime: millis since '70
-    content: String
-  }
-  */
+app.post('/api/calendar', jsonParser, (req, res) => {
   const body = req.body
 
   if (!body.content) {
@@ -62,15 +55,22 @@ app.post('/api/calendar', jsonParser, async (req, res) => {
     content: body.content,
   })
 
-  await entry.save()
-
-  res.json(entry)
+  entry.save()
+    .then((entry) => {
+      res.json(entry)
+    })
+    .catch(error => {
+      return res.status(400).json({ 
+        error: error
+      })
+    })
 })
 
 app.delete('/api/calendar/:id', async (request, response) => {
-  const id = request.params.id
-
-  await CalendarEntry.findByIdAndRemove(request.params.id)
+  const res = await CalendarEntry.findByIdAndRemove(request.params.id)
+  if ( !res ) {
+    response.status(404).end()
+  }
   response.status(204).end()
 })
 
