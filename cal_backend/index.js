@@ -1,47 +1,48 @@
+require('dotenv').config()
+
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
 const cors = require('cors')
+const CalendarEntry  = require('./models/calendarEntry')
 
 const app = express()
 const jsonParser = bodyParser.json()
 
+const MONGODB_URI = process.env.MONGODB_URI
+
 app.use(cors())
 
-let cal = [
+console.log('connecting to MongoDB...')
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connecting to MongoDB:', error.message)
+  })
+
+app.get('/', async (req, res) => {
+  const cal = await CalendarEntry.find({})
+  res.json(cal)
+})
+
+app.get('/api/calendar', async (req, res) => {
+  const cal = await CalendarEntry.find({})
+  res.json(cal)
+})
+
+app.post('/api/calendar', jsonParser, async (req, res) => {
+  /*
+  format:
   {
-    "date": "23/10/2020",
-    "time": "11:10",
-    "content": "hampsulääksy",
-    "id": 132
-  },
-  {
-    "date": "01/12/2020",
-    "time": "11:10",
-    "content": "hampsulääksy",
-    "id": 133
+    datetime: millis since '70
+    content: String
   }
-]
-
-const generateId = () => {
-  const maxId = cal.length > 0
-    ? Math.max(...cal.map(n => n.id))
-    : 0
-  return maxId + 1
-}
-
-
-app.get('/', (req, res) => {
-  res.json(cal)
-})
-
-app.get('/api/calendar', (req, res) => {
-  res.json(cal)
-})
-
-app.post('/api/calendar', jsonParser, (req, res) => {
+  */
   const body = req.body
-  console.log(req)
 
   if (!body.content) {
     return res.status(400).json({ 
@@ -49,22 +50,20 @@ app.post('/api/calendar', jsonParser, (req, res) => {
     })
   }
 
-  const entry = {
-    date: body.date,
-    time: body.time,
+  const entry = new CalendarEntry({
+    dateTime: body.dateTime,
     content: body.content,
-    id: generateId(),
-  }
+  })
 
-  cal = cal.concat(entry)
+  await entry.save()
 
   res.json(entry)
 })
 
-app.delete('/api/calendar/:id', (request, response) => {
-  const id = Number(request.params.id)
-  cal = cal.filter(cal => cal.id !== id)
+app.delete('/api/calendar/:id', async (request, response) => {
+  const id = request.params.id
 
+  await CalendarEntry.findByIdAndRemove(request.params.id)
   response.status(204).end()
 })
 
