@@ -33,22 +33,35 @@ const Calendar = () => {
     }
   }
 
+  const parseToISO = (date, time) => {
+    const day = date.split('/')[0]
+    const month = date.split('/')[1]
+    const year = date.split('/')[2]
+
+    const hours = time.split(':')[0]
+    const minutes = time.split(':')[1]
+
+    return new Date(Date.parse(`${year}-${month}-${day}T${hours}:${minutes}`))
+  }
+
   const addNew = (date, time, content) => {
+    const dateTime = parseToISO(date, time)
+
     const objectToAdd = {
-      date: date,
-      time: time,
+      dateTime: dateTime,
       content: content
     }
-    console.log('lisätään')
-    console.log(objectToAdd)
 
     calendarService
       .addNew(objectToAdd)
       .then((response) => {
-        console.log(response)
-        setCalendarEntries(calendarEntries.concat(response.data))
+        setCalendarEntries(calendarEntries.concat(response))
+      })
+      .catch((error) => {
+        window.alert(`virhe: ${error}`)
       })
   }
+  console.log(calendarEntries)
 
   const deleteEntry = (id) => {
     calendarService
@@ -60,13 +73,14 @@ const Calendar = () => {
 
   return (
     <div>
+      <h2>lisää</h2>
+      <CalendarFrom addNew={addNew}/>
       <h1>Muista!</h1>
       <ul>
           {calendarEntries.map(c => 
             <CalendarEntry
               key={c._id}
-              date={c.date}
-              time={c.time}
+              dateTime={c.dateTime}
               content={c.content}
             />
           )}

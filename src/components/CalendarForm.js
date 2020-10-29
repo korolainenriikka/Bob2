@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const CalendarForm = ({addNew}) => {
+const CalendarForm = ({ addNew }) => {
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
   const [content, setContent] = useState('')
@@ -21,25 +21,39 @@ const CalendarForm = ({addNew}) => {
     return false
   }
 
-  const addEntry = () => {
+  const addEntry = (event) => {
+    event.preventDefault()
+
     if (validateForm()) {
+      setDate('')
+      setTime('')
+      setContent('')
       addNew(date, time, content)
     } else {
-      window.alert('invalid input, insert date in form DD/MM/YYYY and time in HH:mm')
+      window.alert('virhe, ilmoita pvm muodossa pp/kk/vvvv ja aika muodossa tt:mm')
     }
   }
 
   return (
     <form onSubmit={addEntry}>
-      <input
-        onChange = {(event) => setDate(event.target.value)}
-      />
-      <input
-        onChange = {(event) => setTime(event.target.value)}
-      />
-      <input
-        onChange = {(event) => setContent(event.target.value)}
-      />
+      <div>
+        pvm:
+        <input
+          onChange = {(event) => setDate(event.target.value)}
+        />
+      </div>
+      <div>
+        aika:
+        <input
+          onChange = {(event) => setTime(event.target.value)}
+        />
+      </div>
+      <div>
+        kuvaus:
+        <input
+          onChange = {(event) => setContent(event.target.value)}
+        />
+      </div>
       <button type="submit">add</button>
     </form>
   )

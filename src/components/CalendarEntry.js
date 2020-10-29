@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CalendarEntry = ({date, time, content, id, deleteEntry}) => {
+const CalendarEntry = ({dateTime, content, id, deleteEntry}) => {
   return (
-    <li>{date}  {time}: {content} 
+    <li>{dateTime}: {content} 
       
     </li>
   )
