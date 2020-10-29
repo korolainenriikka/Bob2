@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import calendarService from '../services/calendarService'
-import CalendarEntry from './CalendarEntry'
+
 import CalendarFrom from './CalendarForm'
 import { timeStringToISO } from '../utils/timeConversion'
+import EntryList from './EntryList'
 
 const Calendar = () => {
   const [calendarEntries, setCalendarEntries] = useState([])
@@ -51,7 +52,6 @@ const Calendar = () => {
         window.alert(`virhe: ${error}`)
       })
   }
-  console.log(calendarEntries)
 
   const deleteEntry = (id) => {
     calendarService
@@ -66,15 +66,7 @@ const Calendar = () => {
       <h2>lisää</h2>
       <CalendarFrom addNew={addNew}/>
       <h1>Muista!</h1>
-      <ul>
-          {calendarEntries.map(c => 
-            <CalendarEntry
-              key={c._id}
-              dateTime={c.dateTime}
-              content={c.content}
-            />
-          )}
-      </ul>
+      <EntryList listOfEntries={calendarEntries} />
     </div>
   )
 }
