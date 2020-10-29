@@ -39,18 +39,21 @@ const CalendarForm = ({ addNew }) => {
       <div>
         pvm:
         <input
+          value = {date}
           onChange = {(event) => setDate(event.target.value)}
         />
       </div>
       <div>
         aika:
         <input
+          value = {time}
           onChange = {(event) => setTime(event.target.value)}
         />
       </div>
       <div>
         kuvaus:
         <input
+          value = {content}
           onChange = {(event) => setContent(event.target.value)}
         />
       </div>

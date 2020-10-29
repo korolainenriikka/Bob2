@@ -45,7 +45,7 @@ const Calendar = () => {
     calendarService
       .addNew(objectToAdd)
       .then((response) => {
-        setCalendarEntries(calendarEntries.concat(response))
+        setCalendarEntries(calendarEntries.concat(response).sort(sortByTime))
       })
       .catch((error) => {
         window.alert(`virhe: ${error}`)
