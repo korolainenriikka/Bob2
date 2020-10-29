@@ -10,21 +10,18 @@ const Calendar = () => {
     calendarService
       .getAll()
       .then((calendar) => {
-        const sorted = calendar.sort(orderByTime)
-        setCalendarEntries(sorted)
+        setCalendarEntries(calendar.sort(sortByTime))
       })
   }, [])
 
-  const orderByTime = (e1, e2) => {
-    const dateString1 = e1.date.split("/").reverse().join("-");
-    const ISOString1 = dateString1 + 'T' + e1.time + ':00'
-    const date1 = Date.parse(ISOString1)
-
-    const dateString2 = e2.date.split("/").reverse().join("-");
-    const ISOString2 = dateString2 + 'T' + e2.time + ':00'
-    const date2 = Date.parse(ISOString2)
-
-    return date1 > date2
+  const sortByTime = (e1,e2) => {
+    if (e1.dateTime < e2.dateTime){
+      return -1
+    } else if (e1.dateTime > e2.dateTime){
+      return 1
+    } else {
+      return 0
+    }
   }
 
   const addNew = (date, time, content) => {
@@ -58,16 +55,13 @@ const Calendar = () => {
       <ul>
           {calendarEntries.map(c => 
             <CalendarEntry
-              key={c.id}
+              key={c._id}
               date={c.date}
               time={c.time}
               content={c.content}
-              id={c.id}
-              deleteEntry={deleteEntry}
             />
           )}
       </ul>
-      <CalendarFrom addNew={addNew}/>
     </div>
   )
 }

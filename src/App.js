@@ -11,7 +11,3 @@ function App() {
 }
 
 export default App;
-
-//nyttennii lisääminen on ihan pääin helee
-// - asiat vaa katoo consolest
-// - lisääminen siis legittiä ei toimi
