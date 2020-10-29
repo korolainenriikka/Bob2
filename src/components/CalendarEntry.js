@@ -3,9 +3,11 @@ import { ISOtoTimeString } from '../utils/timeConversion'
 
 const CalendarEntry = ({dateTime, content, id, deleteEntry}) => {
   return (
-    <li>
-      {ISOtoTimeString(dateTime)}: {content}  
-    </li>
+    <tr>
+      <td>{ISOtoTimeString(dateTime)}:</td>
+      <td>{content}</td>
+      <td><button onClick={() => deleteEntry(id)}>poista</button></td>
+    </tr>
   )
 }
 

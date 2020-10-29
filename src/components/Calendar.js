@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import calendarService from '../services/calendarService'
 
 import CalendarFrom from './CalendarForm'
@@ -27,8 +27,8 @@ const Calendar = ({ calendarEntries, setCalendarEntries, sortByTime }) => {
   const deleteEntry = (id) => {
     calendarService
       .remove(id)
-      .then((deletedObject) => {
-        setCalendarEntries(calendarEntries.filter(c => c.id !== deletedObject.id))
+      .then(() => {
+        setCalendarEntries(calendarEntries.filter(c => c._id !== id))
       })
   }
 
@@ -37,7 +37,10 @@ const Calendar = ({ calendarEntries, setCalendarEntries, sortByTime }) => {
       <h2>lisää</h2>
       <CalendarFrom addNew={addNew}/>
       <h1>Muista!</h1>
-      <EntryList listOfEntries={calendarEntries} />
+      <EntryList
+        listOfEntries={calendarEntries}
+        deleteEntry={deleteEntry}
+      />
     </div>
   )
 }
