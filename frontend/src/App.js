@@ -3,7 +3,6 @@ import {
   HashRouter as Router,
   Switch, Route, Link
 } from "react-router-dom"
-import { Nav } from 'react-bootstrap'
 
 import Calendar from './components/Calendar'
 import Today from './components/Today'
@@ -40,7 +39,7 @@ const App = () => {
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <Router basename={'/'}>
         <div>
           <button className="navbutton">

@@ -17,13 +17,23 @@ export const ISOtoTimeString = (ISOString) => {
 }
 
 export const timeStringToISO = (date, time) => {
-  const day = date.split('-')[2]
+  let day = date.split('-')[2]
   const month = date.split('-')[1]
   const year = date.split('-')[0]
 
   // timezone conversion UTC -> UTC+2(finland)
   let hours = Number(time.split(':')[0]) + 2
-  if (hours < 10){
+
+  if (hours > 23) {
+    hours = hours - 24
+    day = Number(day) + 1
+
+    if (day < 10) {
+      day = `0${day}`
+    }
+  }
+
+  if (hours < 10) {
     hours = `0${hours}`
   }
 
