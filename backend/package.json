@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "bob2.0.0 backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env node index.js",
+    "dev": "cross-env nodemon index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "build:ui": "rm -rf build && cd ../frontend && npm run build --prod && cp -r build ../backend"
+  },
+  "author": "Riikka Korolainen",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "jest": "^26.6.1",
+    "nodemon": "^2.0.5",
+    "supertest": "^6.0.0"
+  }
+}
