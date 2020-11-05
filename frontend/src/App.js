@@ -3,6 +3,7 @@ import {
   HashRouter as Router,
   Switch, Route, Link
 } from "react-router-dom"
+import { Nav } from 'react-bootstrap'
 
 import Calendar from './components/Calendar'
 import Today from './components/Today'
@@ -39,28 +40,39 @@ const App = () => {
   }
 
   return (
-    <Router basename={'/'}>
-      <div>
-        <Link to="/">koti</Link>
-        <Link to="/calendar">kalenteri</Link>
-      </div>
+    <div class="container">
+      <Router basename={'/'}>
+        <div>
+          <button className="navbutton">
+            <Link to="/">
+              <img alt="homeicon" src={require('./images/home_icon.png')} />
+            </Link>
+          </button>
+          <button className="navbutton">
+            <Link to="/calendar">
+              <img alt="calendaricon" src={require('./images/calendar_icon.png')} />
+            </Link>
+          </button>
+        </div>
+            
 
-      <Switch>
-        <Route path="/calendar">
-          <Calendar
-            calendarEntries={calendarEntries}
-            setCalendarEntries={setCalendarEntries}
-            sortByTime={sortByTime}
-          />
-        </Route>
-        <Route path="/">
-          <Today
-            calendarEntries={calendarEntries}
-          />
-        </Route>
-      </Switch>
-  
-    </Router>
+        <Switch>
+          <Route path="/calendar">
+            <Calendar
+              calendarEntries={calendarEntries}
+              setCalendarEntries={setCalendarEntries}
+              sortByTime={sortByTime}
+            />
+          </Route>
+          <Route path="/">
+            <Today
+              calendarEntries={calendarEntries}
+            />
+          </Route>
+        </Switch>
+    
+      </Router>
+    </div>
   ) 
 }
 

@@ -17,9 +17,9 @@ export const ISOtoTimeString = (ISOString) => {
 }
 
 export const timeStringToISO = (date, time) => {
-  const day = date.split('/')[0]
-  const month = date.split('/')[1]
-  const year = date.split('/')[2]
+  const day = date.split('-')[2]
+  const month = date.split('-')[1]
+  const year = date.split('-')[0]
 
   // timezone conversion UTC -> UTC+2(finland)
   let hours = Number(time.split(':')[0]) + 2

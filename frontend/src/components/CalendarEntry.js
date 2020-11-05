@@ -1,13 +1,14 @@
 import React from 'react'
-import { ListedItem } from '../styles/styledComponents'
 import { ISOtoTimeString } from '../utils/timeConversion'
 
 const CalendarEntry = ({dateTime, content, id, deleteEntry}) => {
   return (
     <tr>
-      <ListedItem>{ISOtoTimeString(dateTime)}:</ListedItem>
-      <ListedItem>{content}</ListedItem>
-      <td><button onClick={() => deleteEntry(id)}>poista</button></td>
+      <td className="listedItem">{ISOtoTimeString(dateTime)}: {content}</td>
+      <td><button className="otherbutton" onClick={() => deleteEntry(id)}>
+        <img alt="trashicon" src={require('../images/trash_icon.png')} />
+        </button>
+      </td>
     </tr>
   )
 }

@@ -1,0 +1,26 @@
+img {
+  width: 20px;
+  height: 20px;
+}
+ 
+.navbutton {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-top: 5px;
+  background-color: white;
+  border-top: unset;
+}
+
+.otherbutton {
+  border-radius: 6px;
+  margin-top: 5px;
+  background-color: white;
+}
+
+.listedItem {
+  font-family: Quicksand; 
+}
+
+.formGroup {
+  margin: 5px;
+}

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Heading } from '../styles/styledComponents'
 import EntryList from './EntryList'
 
 const Today = ({ calendarEntries }) => {
@@ -17,7 +16,7 @@ const Today = ({ calendarEntries }) => {
 
   return(
     <div>
-      <Heading>heips moips päivän jutut:</Heading>
+      <h1>heips moips päivän jutut:</h1>
       <EntryList listOfEntries={todaysCal}/>
     </div>
   )

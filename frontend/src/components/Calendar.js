@@ -4,7 +4,6 @@ import calendarService from '../services/calendarService'
 import CalendarFrom from './CalendarForm'
 import { timeStringToISO } from '../utils/timeConversion'
 import EntryList from './EntryList'
-import { Heading } from '../styles/styledComponents'
 
 const Calendar = ({ calendarEntries, setCalendarEntries, sortByTime }) => {
   const addNew = (date, time, content) => {
@@ -37,7 +36,7 @@ const Calendar = ({ calendarEntries, setCalendarEntries, sortByTime }) => {
     <div>
       <h2>lisää</h2>
       <CalendarFrom addNew={addNew}/>
-      <Heading>Muista!</Heading>
+      <h1>Muista!</h1>
       <EntryList
         listOfEntries={calendarEntries}
         deleteEntry={deleteEntry}
