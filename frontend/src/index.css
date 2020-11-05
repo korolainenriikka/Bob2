@@ -24,3 +24,25 @@ img {
 .formGroup {
   margin: 5px;
 }
+
+.lisaa {
+  width: 150px;
+  height: 80px;
+}
+
+.kalenteri {
+  width: 260px;
+  height: 120px;
+}
+
+.boblogo {
+  width: 220px;
+  height: 260px;
+  position:absolute;
+  bottom:0;
+}
+
+.tanaan {
+  width: 200px;
+  height: 100px;
+}

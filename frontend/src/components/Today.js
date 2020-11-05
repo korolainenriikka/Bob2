@@ -16,8 +16,9 @@ const Today = ({ calendarEntries }) => {
 
   return(
     <div>
-      <h1>heips moips päivän jutut:</h1>
+      <img alt="today" className="tanaan" src={require('../images/tanaan.jpg')}/>
       <EntryList listOfEntries={todaysCal}/>
+      <img alt="logo" className="boblogo" src={require('../images/theworldwidebob.jpg')}/>
     </div>
   )
 }

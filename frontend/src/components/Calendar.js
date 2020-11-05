@@ -34,9 +34,9 @@ const Calendar = ({ calendarEntries, setCalendarEntries, sortByTime }) => {
 
   return (
     <div>
-      <h2>lisää</h2>
+      <img alt="add" className="lisaa" src={require('../images/lisaa.jpg')}/>
       <CalendarFrom addNew={addNew}/>
-      <h1>Muista!</h1>
+      <img alt="calendar" className="kalenteri" src={require('../images/kalenteri.jpg')}/>
       <EntryList
         listOfEntries={calendarEntries}
         deleteEntry={deleteEntry}
