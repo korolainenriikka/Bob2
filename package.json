@@ -4,7 +4,7 @@
   "description": "bob2.0.0 backend",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env node index.js",
+    "start": "node index.js",
     "dev": "cross-env nodemon index.js",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "build:ui": "rm -rf build && cd frontend && npm run build --prod && cp -r build ..",
