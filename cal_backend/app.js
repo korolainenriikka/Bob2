@@ -9,6 +9,8 @@ const jsonParser = bodyParser.json()
 const cors = require('cors')
 app.use(cors())
 
+app.use(express.static('build'))
+
 // mongo init
 const mongoose = require('mongoose')
 

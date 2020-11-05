@@ -21,8 +21,13 @@ export const timeStringToISO = (date, time) => {
   const month = date.split('/')[1]
   const year = date.split('/')[2]
 
-  const hours = time.split(':')[0]
+  // timezone conversion UTC -> UTC+2(finland)
+  let hours = Number(time.split(':')[0]) + 2
+  if (hours < 10){
+    hours = `0${hours}`
+  }
+
   const minutes = time.split(':')[1]
 
-  return new Date(Date.parse(`${year}-${month}-${day}T${Number(hours)+2}:${minutes}`))
+  return Date.parse(`${year}-${month}-${day}T${hours}:${minutes}`)
 }
