@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const calendarRouter = require('./routes/calendar_api_router')
+const authRouter = require('./routes/auth_router')
 
 app.use(cors())
 app.use(express.static('build'))
@@ -29,5 +30,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 
 
 app.use('/api/calendar', calendarRouter)
+app.use('/api/users', authRouter)
 
 module.exports = app

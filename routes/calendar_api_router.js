@@ -12,9 +12,9 @@ calendarRouter.get('/', async (req, res) => {
 calendarRouter.post('/', jsonParser, (req, res) => {
   const body = req.body
 
-  if (!body.content) {
+  if (!body.content || !body.dateTime) {
     return res.status(400).json({
-      error: 'content missing'
+      error: 'content or timestamp missing'
     })
   }
 
