@@ -8,11 +8,11 @@ const Today = ({ calendarEntries }) => {
     const dateTime = new Date(Date.parse(e.dateTime))
 
     return (
-        dateTime.getDate() === today.getDate()
+      dateTime.getDate() === today.getDate()
       && dateTime.getMonth() === today.getMonth()
       && dateTime.getFullYear() === today.getFullYear()
     )
-})
+  })
 
   return(
     <div>

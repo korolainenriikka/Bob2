@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { Form , Button} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Form , Button } from 'react-bootstrap'
 
 const CalendarForm = ({ addNew }) => {
   const [date, setDate] = useState('')
@@ -26,7 +26,7 @@ const CalendarForm = ({ addNew }) => {
           onChange = {(event) => setDate(event.target.value)}
         />
       </Form.Group>
-    
+
       <Form.Group className="formGroup">
         <Form.Label>Aika</Form.Label>
         <Form.Control

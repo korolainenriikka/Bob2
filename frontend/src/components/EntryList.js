@@ -4,7 +4,7 @@ import CalendarEntry from './CalendarEntry'
 const EntryList = ({ listOfEntries, deleteEntry }) => (
   <table>
     <tbody>
-      {listOfEntries.map(e => 
+      {listOfEntries.map(e =>
         <CalendarEntry
           key={e._id}
           dateTime={e.dateTime}

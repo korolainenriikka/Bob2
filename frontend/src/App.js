@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   HashRouter as Router,
   Switch, Route, Link
-} from "react-router-dom"
+} from 'react-router-dom'
 
 import Calendar from './components/Calendar'
 import Today from './components/Today'
@@ -53,7 +53,6 @@ const App = () => {
             </Link>
           </button>
         </div>
-            
 
         <Switch>
           <Route path="/calendar">
@@ -69,10 +68,9 @@ const App = () => {
             />
           </Route>
         </Switch>
-    
       </Router>
     </div>
-  ) 
+  )
 }
 
-export default App;
+export default App

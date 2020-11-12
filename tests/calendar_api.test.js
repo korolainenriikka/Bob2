@@ -42,9 +42,9 @@ test('post without content is not added to database', async () => {
     .send({})
     .expect(400)
 
-    const response = await api.get('/api/calendar')
-    const calendarInDb = response.body
-    expect(calendarInDb.length).toBe(0)
+  const response = await api.get('/api/calendar')
+  const calendarInDb = response.body
+  expect(calendarInDb.length).toBe(0)
 })
 
 test('post without required fields is not added to database', async () => {
@@ -57,9 +57,9 @@ test('post without required fields is not added to database', async () => {
     .send(entryToAdd)
     .expect(400)
 
-    const response = await api.get('/api/calendar')
-    const calendarInDb = response.body
-    expect(calendarInDb.length).toBe(0)
+  const response = await api.get('/api/calendar')
+  const calendarInDb = response.body
+  expect(calendarInDb.length).toBe(0)
 })
 
 test('delete removes entry from database', async () => {
@@ -84,7 +84,7 @@ test('delete removes entry from database', async () => {
 
 test('delete with nonexistent id response 404 not found', async () => {
   await api
-    .delete(`/api/calendar/5f9a93887b894a2a736fa025`)
+    .delete('/api/calendar/5f9a93887b894a2a736fa025')
     .expect(404)
 })
 

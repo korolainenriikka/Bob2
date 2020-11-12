@@ -1,7 +1,7 @@
 import React from 'react'
 import { ISOtoTimeString } from '../utils/timeConversion'
 
-const CalendarEntry = ({dateTime, content, id, deleteEntry}) => {
+const CalendarEntry = ({ dateTime, content, id, deleteEntry }) => {
   if (!deleteEntry) {
     // today-view has no deleting functionality
     return (
@@ -15,7 +15,7 @@ const CalendarEntry = ({dateTime, content, id, deleteEntry}) => {
         <td className="listedItem">{ISOtoTimeString(dateTime)}: {content}</td>
         <td><button className="otherbutton" onClick={() => deleteEntry(id)}>
           <img alt="trashicon" src={require('../images/trash_icon.png')} />
-          </button>
+        </button>
         </td>
       </tr>
     )

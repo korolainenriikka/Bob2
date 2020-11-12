@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'test') {
 console.log('connecting to MongoDB...')
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch((error) => {
@@ -42,8 +42,8 @@ app.post('/api/calendar', jsonParser, (req, res) => {
   const body = req.body
 
   if (!body.content) {
-    return res.status(400).json({ 
-      error: 'content missing' 
+    return res.status(400).json({
+      error: 'content missing'
     })
   }
 
@@ -57,7 +57,7 @@ app.post('/api/calendar', jsonParser, (req, res) => {
       res.json(entry)
     })
     .catch(error => {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: error
       })
     })
