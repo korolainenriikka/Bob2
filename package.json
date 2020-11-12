@@ -6,11 +6,12 @@
   "scripts": {
     "start": "node index.js",
     "dev": "cross-env nodemon index.js",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand ./tests",
+    "test:all": "npm run test && cd frontend && CI=true npm test && cd ..",
     "lint": "eslint .",
     "build:ui": "rm -rf build && cd frontend && npm run build --prod && cp -r build ..",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy"
+    "deploy:full": "npm run test:all && npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy"
   },
   "author": "Riikka Korolainen",
   "license": "MIT",
