@@ -3,4 +3,5 @@ timer_bob
 .env
 node_modules
 docs
-build
+build/*
+frontend/build/*
