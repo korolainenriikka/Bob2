@@ -10,6 +10,7 @@ import calendarService from './services/calendarService'
 
 const App = () => {
   const [calendarEntries, setCalendarEntries] = useState([])
+  const today = new Date(Date.now())
 
   useEffect(() => {
     calendarService
@@ -65,6 +66,7 @@ const App = () => {
           <Route path="/">
             <Today
               calendarEntries={calendarEntries}
+              today={today}
             />
           </Route>
         </Switch>

@@ -1,11 +1,9 @@
 import React from 'react'
 import EntryList from './EntryList'
 
-const Today = ({ calendarEntries }) => {
-  const today = new Date(Date.now())
-
+const Today = ({ calendarEntries, today }) => {
   const todaysCal = calendarEntries.filter(e => {
-    const dateTime = new Date(Date.parse(e.dateTime))
+    let dateTime = new Date(Date.parse(e.dateTime))
 
     return (
       dateTime.getDate() === today.getDate()
