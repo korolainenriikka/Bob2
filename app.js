@@ -1,17 +1,12 @@
 require('dotenv').config()
 const express = require('express')
-const bodyParser = require('body-parser')
-
-// app init
 const app = express()
-const jsonParser = bodyParser.json()
-
 const cors = require('cors')
-app.use(cors())
+const calendarRouter = require('./routes/calendar_api_router')
 
+app.use(cors())
 app.use(express.static('build'))
 
-// mongo init
 const mongoose = require('mongoose')
 
 let MONGODB_URI = process.env.MONGODB_URI
@@ -31,44 +26,8 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
   })
 
 // router
-const CalendarEntry  = require('./models/calendarEntry')
 
-app.get('/api/calendar', async (req, res) => {
-  const cal = await CalendarEntry.find({})
-  res.json(cal)
-})
 
-app.post('/api/calendar', jsonParser, (req, res) => {
-  const body = req.body
-
-  if (!body.content) {
-    return res.status(400).json({
-      error: 'content missing'
-    })
-  }
-
-  const entry = new CalendarEntry({
-    dateTime: body.dateTime,
-    content: body.content,
-  })
-
-  entry.save()
-    .then((entry) => {
-      res.json(entry)
-    })
-    .catch(error => {
-      return res.status(400).json({
-        error: error
-      })
-    })
-})
-
-app.delete('/api/calendar/:id', async (request, response) => {
-  const res = await CalendarEntry.findByIdAndRemove(request.params.id)
-  if ( !res ) {
-    response.status(404).end()
-  }
-  response.status(204).end()
-})
+app.use('/api/calendar', calendarRouter)
 
 module.exports = app

@@ -20,6 +20,7 @@ const CalendarForm = ({ addNew }) => {
       <Form.Group className="formGroup">
         <Form.Label>Pvm</Form.Label>
         <Form.Control
+          className="dateInput"
           size="sm"
           type="date"
           value = {date}
@@ -30,6 +31,7 @@ const CalendarForm = ({ addNew }) => {
       <Form.Group className="formGroup">
         <Form.Label>Aika</Form.Label>
         <Form.Control
+          className="timeInput"
           size="sm"
           type="time"
           value = {time}
@@ -40,6 +42,7 @@ const CalendarForm = ({ addNew }) => {
       <Form.Group className="formGroup">
         <Form.Label>Kuvaus</Form.Label>
         <Form.Control
+          className="contentInput"
           size="sm"
           type="text"
           value = {content}
