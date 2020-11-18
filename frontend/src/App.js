@@ -6,11 +6,13 @@ import {
 
 import Calendar from './components/Calendar'
 import Today from './components/Today'
+import UnauthorizedView from './components/UnauthorizedView'
 import calendarService from './services/calendarService'
 
 const App = () => {
   const [calendarEntries, setCalendarEntries] = useState([])
   const today = new Date(Date.now())
+  const [authorized, setAuthorized] = useState(false)
 
   useEffect(() => {
     calendarService
@@ -38,41 +40,45 @@ const App = () => {
       return 0
     }
   }
+  
+  if (authorized) {
+    return (
+      <div className="container">
+        <Router basename={'/'}>
+          <div>
+            <button className="navbutton">
+              <Link to="/">
+                <img alt="homeicon" src={require('./images/home_icon.png')} />
+              </Link>
+            </button>
+            <button className="navbutton">
+              <Link to="/calendar">
+                <img alt="calendaricon" src={require('./images/calendar_icon.png')} />
+              </Link>
+            </button>
+          </div>
 
-  return (
-    <div className="container">
-      <Router basename={'/'}>
-        <div>
-          <button className="navbutton">
-            <Link to="/">
-              <img alt="homeicon" src={require('./images/home_icon.png')} />
-            </Link>
-          </button>
-          <button className="navbutton">
-            <Link to="/calendar">
-              <img alt="calendaricon" src={require('./images/calendar_icon.png')} />
-            </Link>
-          </button>
-        </div>
-
-        <Switch>
-          <Route path="/calendar">
-            <Calendar
-              calendarEntries={calendarEntries}
-              setCalendarEntries={setCalendarEntries}
-              sortByTime={sortByTime}
-            />
-          </Route>
-          <Route path="/">
-            <Today
-              calendarEntries={calendarEntries}
-              today={today}
-            />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
-  )
+          <Switch>
+            <Route path="/calendar">
+              <Calendar
+                calendarEntries={calendarEntries}
+                setCalendarEntries={setCalendarEntries}
+                sortByTime={sortByTime}
+              />
+            </Route>
+            <Route path="/">
+              <Today
+                calendarEntries={calendarEntries}
+                today={today}
+              />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    )
+  } else {
+    return <UnauthorizedView />
+  }
 }
 
 export default App

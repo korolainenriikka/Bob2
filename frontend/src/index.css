@@ -46,3 +46,24 @@ img {
   width: 200px;
   height: 100px;
 }
+
+#unauthText {
+  text-align: center;
+  vertical-align: middle;
+  font-family: Quicksand;
+}
+
+#unauthDiv {
+  padding: 50px;
+  height:70%;
+  width:50%;
+  margin: auto;
+}
+
+#unauthLogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 140px;
+  height: 170px;
+}
