@@ -40,7 +40,7 @@ const App = () => {
       return 0
     }
   }
-  
+
   if (authorized) {
     return (
       <div className="container">
@@ -77,7 +77,7 @@ const App = () => {
       </div>
     )
   } else {
-    return <UnauthorizedView />
+    return <UnauthorizedView setAuthorized={setAuthorized}/>
   }
 }
 

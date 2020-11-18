@@ -2,7 +2,7 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import authService from '../services/authService'
 
-const UnauthorizedView = () => {
+const UnauthorizedView = ({ setAuthorized }) => {
 
   const handleLogin = (username, password) => {
     const credentials = {
@@ -14,6 +14,7 @@ const UnauthorizedView = () => {
       .login(credentials)
       .then(response => {
         console.log(response)
+        setAuthorized(true)
       })
       .catch ((exception) => {
         console.log(exception)
