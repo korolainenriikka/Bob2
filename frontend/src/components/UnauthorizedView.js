@@ -3,7 +3,7 @@ import LoginForm from './LoginForm'
 import authService from '../services/authService'
 
 const UnauthorizedView = ({ setAuthorized }) => {
-
+  console.log(process.env.REACT_APP_TOKEN)
   const handleLogin = (username, password) => {
     const credentials = {
       username: username,
@@ -15,6 +15,7 @@ const UnauthorizedView = ({ setAuthorized }) => {
       .then(response => {
         console.log(response)
         setAuthorized(true)
+        localStorage.setItem('bob2Auth', process.env.REACT_APP_TOKEN)
       })
       .catch ((exception) => {
         console.log(exception)

@@ -35,6 +35,7 @@ authRouter.post('/new', jsonParser, async(req, res) => {
 })
 
 authRouter.post('/login', jsonParser, async(req, res) => {
+  console.log('auth routeris')
   const credentials = req.body
 
   if (!credentials.username || !credentials.password) {
@@ -42,16 +43,19 @@ authRouter.post('/login', jsonParser, async(req, res) => {
       error: 'username or password missing'
     })
   }
+  console.log('credsut kunnos')
 
   const user = await User.findOne({ username: credentials.username })
-
+  console.log(user)
   if (!user) {
     res.status(401).end()
   } else {
     const passwordCorrect = await bcrypt.compare(credentials.password, user.passwordHash)
 
     if (passwordCorrect) {
-      res.status(200).end()
+      res.status(200).json({
+        token: process.env.TOKEN
+      })
     } else {
       res.status(401).end()
     }

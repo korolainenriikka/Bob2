@@ -21,10 +21,12 @@ test('created user can log in', async () => {
     .expect(200)
     .expect('Content-Type', /application\/json/)
 
-  await api
+  const response = await api
     .post('/api/users/login')
     .send(newUser)
     .expect(200)
+
+  expect(response).not.toBe(null)
 })
 
 test('false credentials cannot log in', async () => {

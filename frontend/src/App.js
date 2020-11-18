@@ -10,6 +10,7 @@ import UnauthorizedView from './components/UnauthorizedView'
 import calendarService from './services/calendarService'
 
 const App = () => {
+  console.log(localStorage.getItem('bob2Auth'))
   const [calendarEntries, setCalendarEntries] = useState([])
   const today = new Date(Date.now())
   const [authorized, setAuthorized] = useState(false)

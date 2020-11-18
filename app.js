@@ -28,7 +28,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 
 // router
 
-
 app.use('/api/calendar', calendarRouter)
 app.use('/api/users', authRouter)
 
