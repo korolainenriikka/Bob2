@@ -12,7 +12,7 @@ import calendarService from './services/calendarService'
 const App = () => {
   const [calendarEntries, setCalendarEntries] = useState([])
   const today = new Date(Date.now())
-  const [authorized, setAuthorized] = useState(false)
+  const [authorized, setAuthorized] = useState(true)
 
   useEffect(() => {
     if (localStorage.getItem('bob2Auth') === process.env.REACT_APP_AUTH_TOKEN) {
