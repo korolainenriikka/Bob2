@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { Form , Button } from 'react-bootstrap'
 
 const CalendarForm = ({ login }) => {
@@ -17,7 +17,7 @@ const CalendarForm = ({ login }) => {
     <Form onSubmit={submit} >
       <Form.Group className="formGroup">
         <Form.Control
-          className="textInput"
+          className="usernameInput"
           size="sm"
           type="text"
           placeholder="käyttäjätunnus"
