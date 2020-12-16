@@ -11,8 +11,8 @@
     "lint": "eslint .",
     "build:ui": "rm -rf build && cd frontend && npm run build --prod && cp -r build ..",
     "deploy": "git push heroku master",
-    "deploy:dev": "git push heroku_dev master",
-    "deploy:full:dev": "npm run test:all && npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy:dev"
+    "deploy:full": "npm run test:all && npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy && npm run rm:build:git",
+    "rm:build:git": "rm -rf build && git add . && git commit -m buildrm && git push"
   },
   "author": "Riikka Korolainen",
   "license": "MIT",
