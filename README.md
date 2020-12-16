@@ -4,6 +4,8 @@ _"Rutiinit roboteille, analyysit ammattilaisille"_
 
 a.k.a Bob goes the world wide web. An updated & upgraded, fully personalized personal assistant project for keeping track of the trivial parts of everyday life so I can focus on something else. And, meanwhile, get better at full stack development.
 
-[time log](https://github.com/korolainenriikka/Bob2/blob/master/timelog.md)
+[Time log](https://github.com/korolainenriikka/Bob2/blob/master/timelog.md)
 
 [Heroku](https://bobthepersonalassistant.herokuapp.com/) (currently only supports one user)
+
+[Snapshots](https://github.com/korolainenriikka/Bob2/blob/master/snapshots/snapshots.md)
