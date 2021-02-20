@@ -9,4 +9,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run frontend tests
         working-directory: ./frontend
-        run: npm install && npm test
+        run: npm install && CI=true npm test
