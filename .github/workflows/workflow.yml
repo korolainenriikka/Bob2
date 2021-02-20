@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   run_tests_and_lint:
-		runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 		steps:
 			- uses: actions/checkout@v2
 			- name: Run frontend tests
