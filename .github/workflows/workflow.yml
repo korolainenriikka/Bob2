@@ -3,7 +3,7 @@ name: Deploy
 on: [push]
 
 jobs:
-	run_tests_and_lint:
+  build:
 		runs-on: ubuntu-latest
 		steps:
 		  - uses: actions/checkout@v2
